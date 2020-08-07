@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Tricksy\Challenges as Tricksy;
-
 class Challenges
 {
     public function start()
@@ -12,7 +10,7 @@ class Challenges
 
         // load challenges
         $this->shapes();
-        // $this->extrude();
+        $this->extrude();
         // $this->library();
 
         // $tricksy = new Tricksy();
