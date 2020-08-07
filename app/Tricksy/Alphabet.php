@@ -4,41 +4,45 @@ namespace App\Tricksy;
 
 use Iterator;
 
+// I implemented this as an Iterator-like object containing an array of
+// ASCII characters, populated by a for loop in the constructor.
+//
+// The below code is from the answer, typed out by yours truly to understand
+// what an Iterator is.
+//
+// https://github.com/develop-me/bootcamp--week-06--php/blob/master/challenges/08-interfaces/answers/app/Tricksy/Alphabet.php
+
 class Alphabet implements Iterator
 {
-    private $position = 0;
-    private $array = array();
+    private $code;
 
     public function __construct()
     {
-        $this->position = 0;
-        for ($i = 65; $i < 91; $i += 1) {
-            $this->array[] = chr($i);
-        }
+        $this->rewind();
     }
 
     public function rewind()
     {
-        $this->position = 0;
+        $this->code = 65;
     }
 
     public function current()
     {
-        return $this->array[$this->position];
+        return chr($this->code);
     }
 
     public function key()
     {
-        return $this->position;
+        return $this->code - 65;
     }
 
     public function next()
     {
-        ++$this->position;
+        $this->code += 1;
     }
 
     public function valid()
     {
-        return isset($this->array[$this->position]);
+        return $this->code >= 65 && $this->code <= 90;
     }
 }
